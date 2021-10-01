@@ -9,3 +9,48 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: construye-mundo
 Template: astra
 */
+
+.ast-desktop .main-header-menu:not(#ast-hf-mobile-menu) .sub-menu {
+	box-shadow: 0 3px 6px -4px rgb(0 0 0 / 25%) inset;
+}
+
+li.destacado {
+	background: #80c341;
+	padding: 1rem;
+	margin-left: 2rem;
+}
+
+li.destacado .menu-text {
+	color: white;
+}
+
+li.destacado .sub-arrow {
+	opacity: 0;
+}
+.main-header-bar.ast-sticky-active {
+	box-shadow: 0 2px 16px 0 rgb(36 50 66 / 5%), 0 2px 8px 0 rgb(36 50 66 / 5%), 0 2px 4px 0 rgb(36 50 66 / 5%),
+		0 2px 2px 0 rgb(36 50 66 / 5%);
+	border: none;
+}
+
+[data-section='section-header-mobile-trigger'] .ast-button-wrap .mobile-menu-toggle-icon .ast-mobile-svg {
+	fill: #11469f;
+}
+
+.ast-theme-transparent-header .ast-builder-menu-1 .main-header-menu > .menu-item > .sub-menu,
+.ast-builder-menu-1 .main-header-menu > .menu-item > .astra-full-megamenu-wrapper {
+	margin-top: 40px;
+}
+
+.ast-theme-transparent-header.ast-desktop .ast-builder-menu-1 .main-header-menu > .menu-item > .sub-menu:before,
+.ast-desktop .ast-builder-menu-1 .main-header-menu > .menu-item > .astra-full-megamenu-wrapper:before {
+	height: calc(40px + 5px);
+}
+
+.ast-single-related-posts-container .ast-related-posts-wrapper {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.elementor-element p {
+	margin: unset;
+}
