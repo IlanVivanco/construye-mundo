@@ -82,6 +82,11 @@ li.destacado .sub-arrow {
 	object-fit: cover;
 }
 
+.equal-height .elementor-element.elementor-widget,
+.equal-height .elementor-element.elementor-widget .elementor-widget-container {
+	height: 100%;
+}
+
 /**
 * Forms
 */
