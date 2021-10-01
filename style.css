@@ -54,3 +54,30 @@ li.destacado .sub-arrow {
 .elementor-element p {
 	margin: unset;
 }
+
+/**
+* Galleries
+*/
+
+.bwg_container .bwg-item0 {
+	background: none !important;
+	border: 1px solid #ccc !important;
+}
+
+.bwg_container .bwg-title2 {
+	color: #777 !important;
+	font-family: inherit !important;
+	font-weight: 400 !important;
+	font-size: 0.9rem !important;
+	margin-top: 5px !important;
+}
+
+.bwg-container .bwg-item > a {
+	margin-right: 1rem !important;
+	margin-bottom: 1rem !important;
+}
+
+.bwg-standard-thumbnails .bwg-item1 img {
+	width: 100%;
+	object-fit: cover;
+}
