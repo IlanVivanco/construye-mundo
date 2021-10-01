@@ -81,3 +81,224 @@ li.destacado .sub-arrow {
 	width: 100%;
 	object-fit: cover;
 }
+
+/**
+* Forms
+*/
+#wpcf7-f4007-o1 form > p {
+	display: flex;
+	align-items: center;
+	margin: 0;
+}
+
+#wpcf7-f4007-o1 .wpcf7-form-control {
+	padding: 0.8rem;
+	line-height: 1.2;
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: normal;
+	border: none;
+	border-radius: 3px;
+}
+
+#wpcf7-f4007-o1 .wpcf7-email {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	background: white;
+}
+
+#wpcf7-f4007-o1 .wpcf7-submit {
+	background: #638dbe;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	font-weight: 500;
+}
+
+#wpcf7-f4007-o1 .wpcf7-submit:hover,
+#wpcf7-f4007-o1 .wpcf7-submit:focus {
+	background: #5782b2;
+	color: #ddd;
+}
+
+#wpcf7-f4007-o1 .wpcf7-not-valid-tip {
+	display: none;
+}
+
+#wpcf7-f4007-o1 .wpcf7-response-output {
+	margin: 0.5rem 0 0;
+	border: none;
+	padding: 0;
+	font-size: 0.9rem;
+	font-style: italic;
+}
+
+#wpcf7-f4007-o1 .ajax-loader {
+	background: #1e3f64;
+	min-width: 24px;
+	margin: 0 0 0 1rem;
+}
+
+#wpcf7-f4020-p4043-o1 .wpcf7-list-item {
+	margin: 0;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice {
+	display: flex;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item {
+	padding: 1rem;
+	background: #e9e9e9;
+	margin: 0 0 0 1em;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item.first {
+	margin: 0;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item:hover {
+	background: #e3e3e3;
+}
+
+#wpcf7-f4020-p4043-o1 #donation .wpcf7-list-item {
+	width: 25%;
+}
+
+#wpcf7-f4020-p4043-o1 #donation_type .wpcf7-list-item {
+	width: 50%;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item-label {
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice label input {
+	display: none !important;
+}
+
+#wpcf7-f4020-p4043-o1 .big-choice input:checked + .wpcf7-list-item-label {
+	color: #11469f !important;
+}
+
+#wpcf7-f4020-p4043-o1 #donation > span::before {
+	content: 'Quiero donar';
+}
+
+#wpcf7-f4020-p4043-o1 #donation .last .wpcf7-list-item-label {
+	font-size: 1.8rem;
+	padding: 12px 20px;
+	line-height: 1;
+}
+
+#wpcf7-f4020-p4043-o1 #donation_type .wpcf7-list-item-label {
+	font-size: 2.2rem;
+	text-transform: uppercase;
+}
+
+#wpcf7-f4020-p4043-o1 input[disabled] {
+	display: none !important;
+}
+
+#wpcf7-f4020-p4043-o1 .has-free-text input:checked + span {
+	display: none;
+}
+
+#wpcf7-f4020-p4043-o1 .wpcf7-free-text {
+	background: none !important;
+	border-bottom: 1px solid #bbb !important;
+	width: 2.5em !important;
+	margin: 0 auto;
+	font-size: 2rem;
+	padding: 0 !important;
+	text-align: center;
+	display: inline-flex;
+}
+
+#wpcf7-f4020-p4043-o1 fieldset {
+	margin: 2rem 0;
+}
+
+#wpcf7-f4020-p4043-o1 fieldset legend {
+	margin: 0;
+}
+
+#wpcf7-f4020-p4043-o1 fieldset > p {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: row;
+}
+
+#wpcf7-f4020-p4043-o1 fieldset > p > span {
+	width: calc((100% - 2rem) / 2) !important;
+	margin: 0.5rem;
+}
+
+#wpcf7-f4020-p4043-o1 span.user_bank_auth {
+	width: 100% !important;
+	margin: 0.5rem 0 0 0.5rem;
+}
+
+#wpcf7-f4020-p4043-o1 span.user_address {
+	width: 100% !important;
+	margin-top: 2rem;
+}
+
+#wpcf7-f4020-p4043-o1 .legal {
+	background: #f9f9f9;
+	padding: 1rem 1.5rem 1rem 1rem;
+	line-height: 1.4rem;
+	font-size: 0.8rem;
+	text-align: justify;
+}
+
+#wpcf7-f4020-p4043-o1 span.user_bank_auth,
+#wpcf7-f4020-p4043-o1 .notes {
+	line-height: 1.4rem;
+	font-size: 0.8rem;
+}
+
+#wpcf7-f4020-p4043-o1 .notes {
+	font-style: italic;
+}
+
+#wpcf7-f4020-p4043-o1 .submit {
+	text-align: center;
+}
+
+#wpcf7-f4020-p4043-o1 .submit .wpcf7-submit {
+	text-transform: uppercase;
+	padding: 1rem 2rem;
+}
+
+#wpcf7-f4020-p4043-o1 .wpcf7-not-valid-tip {
+	font-size: 0.9rem;
+	font-style: italic;
+	color: hsl(0deg 51% 63%);
+}
+
+#wpcf7-f4020-p4043-o1 .wpcf7-response-output {
+	border-width: 0 !important;
+	border-left-width: 4px !important;
+	background: #f9f9f9;
+}
+
+#wpcf7-f4020-p4043-o1 .wpcf7 form.sent .wpcf7-response-output {
+	font-size: 2rem;
+	text-align: center;
+	color: #689f35;
+	border: none !important;
+	font-weight: bold;
+}
