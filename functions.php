@@ -32,6 +32,15 @@ function iv_filter_blog_posts_on_blog_page($query) {
 	}
 }
 
-}
+/**
+ * Disables AddToAny's core script on non-posts
+ */
+add_filter( 'addtoany_script_disabled', 'addtoany_disable_script_except_for_posts' );
 
-add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+function addtoany_disable_script_except_for_posts( $script_disabled ) {
+	if ( ! is_single() && ! is_archive() ) {
+		return true;
+	}
+
+	return $script_disabled;
+}
