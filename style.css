@@ -74,6 +74,14 @@ li.destacado .sub-arrow {
 	margin: unset;
 }
 
+.ast-footer-copyright a {
+	color: #9097aa;
+}
+
+.ast-footer-copyright a:hover {
+	color: #000000;
+}
+
 /**
 * Galleries
 */
