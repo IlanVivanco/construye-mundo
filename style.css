@@ -10,6 +10,21 @@ Text Domain: construye-mundo
 Template: astra
 */
 
+/* #masthead .ast-container {
+	max-width: 1200px;
+}
+
+@media (max-width: 1200px) {
+	#masthead .ast-container {
+		max-width: 90vw;
+	}
+} */
+
+#secondary li {
+	line-height: 1.2 !important;
+	margin-bottom: 1rem !important;
+}
+
 .ast-archive-description .page-title {
 	color: #071a3c;
 }
@@ -94,13 +109,13 @@ li.destacado .sub-arrow {
 /**
 * Forms
 */
-#wpcf7-f4007-o1 form > p {
+#form-newsletter {
 	display: flex;
 	align-items: center;
 	margin: 0;
 }
 
-#wpcf7-f4007-o1 .wpcf7-form-control {
+#form-newsletter .wpcf7-form-control {
 	padding: 0.8rem;
 	line-height: 1.2;
 	font-family: inherit;
@@ -110,30 +125,30 @@ li.destacado .sub-arrow {
 	border-radius: 3px;
 }
 
-#wpcf7-f4007-o1 .wpcf7-email {
+#form-newsletter .wpcf7-email {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	background: white;
 }
 
-#wpcf7-f4007-o1 .wpcf7-submit {
+#form-newsletter .wpcf7-submit {
 	background: #638dbe;
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	font-weight: 500;
 }
 
-#wpcf7-f4007-o1 .wpcf7-submit:hover,
-#wpcf7-f4007-o1 .wpcf7-submit:focus {
+#form-newsletter .wpcf7-submit:hover,
+#form-newsletter .wpcf7-submit:focus {
 	background: #5782b2;
 	color: #ddd;
 }
 
-#wpcf7-f4007-o1 .wpcf7-not-valid-tip {
+#form-newsletter .wpcf7-not-valid-tip {
 	display: none;
 }
 
-#wpcf7-f4007-o1 .wpcf7-response-output {
+#form-newsletter .wpcf7-response-output {
 	margin: 0.5rem 0 0;
 	border: none;
 	padding: 0;
@@ -141,21 +156,21 @@ li.destacado .sub-arrow {
 	font-style: italic;
 }
 
-#wpcf7-f4007-o1 .ajax-loader {
+#form-newsletter .ajax-loader {
 	background: #1e3f64;
 	min-width: 24px;
 	margin: 0 0 0 1rem;
 }
 
-#wpcf7-f4020-p4043-o1 .wpcf7-list-item {
+#form-donativos .wpcf7-list-item {
 	margin: 0;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice {
+#form-donativos .big-choice {
 	display: flex;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item {
+#form-donativos .big-choice .wpcf7-list-item {
 	padding: 1rem;
 	background: #e9e9e9;
 	margin: 0 0 0 1em;
@@ -165,66 +180,66 @@ li.destacado .sub-arrow {
 	justify-content: center;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item.first {
+#form-donativos .big-choice .wpcf7-list-item.first {
 	margin: 0;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item:hover {
+#form-donativos .big-choice .wpcf7-list-item:hover {
 	background: #e3e3e3;
 }
 
-#wpcf7-f4020-p4043-o1 #donation .wpcf7-list-item {
+#form-donativos #donation .wpcf7-list-item {
 	width: 25%;
 }
 
-#wpcf7-f4020-p4043-o1 #donation_type .wpcf7-list-item {
+#form-donativos #donation_type .wpcf7-list-item {
 	width: 50%;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item label {
+#form-donativos .big-choice .wpcf7-list-item label {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice .wpcf7-list-item-label {
+#form-donativos .big-choice .wpcf7-list-item-label {
 	font-size: 3rem;
 	font-weight: bold;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice label input {
+#form-donativos .big-choice label input {
 	display: none !important;
 }
 
-#wpcf7-f4020-p4043-o1 .big-choice input:checked + .wpcf7-list-item-label {
+#form-donativos .big-choice input:checked + .wpcf7-list-item-label {
 	color: #11469f !important;
 }
 
-#wpcf7-f4020-p4043-o1 #donation > span::before {
+#form-donativos #donation > span::before {
 	content: 'Quiero donar';
 }
 
-#wpcf7-f4020-p4043-o1 #donation .last .wpcf7-list-item-label {
+#form-donativos #donation .last .wpcf7-list-item-label {
 	font-size: 1.8rem;
 	padding: 12px 20px;
 	line-height: 1;
 }
 
-#wpcf7-f4020-p4043-o1 #donation_type .wpcf7-list-item-label {
+#form-donativos #donation_type .wpcf7-list-item-label {
 	font-size: 2.2rem;
 	text-transform: uppercase;
 }
 
-#wpcf7-f4020-p4043-o1 input[disabled] {
+#form-donativos input[disabled] {
 	display: none !important;
 }
 
-#wpcf7-f4020-p4043-o1 .has-free-text input:checked + span {
+#form-donativos .has-free-text input:checked + span {
 	display: none;
 }
 
-#wpcf7-f4020-p4043-o1 .wpcf7-free-text {
+#form-donativos .wpcf7-free-text {
 	background: none !important;
 	border-bottom: 1px solid #bbb !important;
 	width: 2.5em !important;
@@ -235,79 +250,174 @@ li.destacado .sub-arrow {
 	display: inline-flex;
 }
 
-#wpcf7-f4020-p4043-o1 fieldset {
+#form-donativos fieldset {
 	margin: 2rem 0;
 }
 
-#wpcf7-f4020-p4043-o1 fieldset legend {
+#form-donativos fieldset legend {
 	margin: 0;
 }
 
-#wpcf7-f4020-p4043-o1 fieldset > p {
+#form-donativos fieldset > p {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	flex-direction: row;
 }
 
-#wpcf7-f4020-p4043-o1 fieldset > p > span {
+#form-donativos fieldset > p > span {
 	width: calc((100% - 2rem) / 2) !important;
 	margin: 0.5rem;
 }
 
-#wpcf7-f4020-p4043-o1 span.user_bank_auth {
+#form-donativos span.user_bank_auth {
 	width: 100% !important;
 	margin: 0.5rem 0 0 0.5rem;
 }
 
-#wpcf7-f4020-p4043-o1 span.user_address {
+#form-donativos span.user_address {
 	width: 100% !important;
 	margin-top: 2rem;
 }
 
-#wpcf7-f4020-p4043-o1 .legal {
+#form-donativos .legal {
 	background: #f9f9f9;
+	margin-top: 2rem;
 	padding: 1rem 1.5rem 1rem 1rem;
-	line-height: 1.4rem;
+	line-height: 1.2rem;
 	font-size: 0.8rem;
 	text-align: justify;
 }
 
-#wpcf7-f4020-p4043-o1 span.user_bank_auth,
-#wpcf7-f4020-p4043-o1 .notes {
+#form-donativos .legal .new-line:not(:last-child) {
+	display: block;
+	margin: 1rem 0;
+}
+
+#form-donativos span.user_bank_auth,
+#form-donativos .notes {
 	line-height: 1.4rem;
 	font-size: 0.8rem;
 }
 
-#wpcf7-f4020-p4043-o1 .notes {
+#form-donativos .notes {
 	font-style: italic;
 }
 
-#wpcf7-f4020-p4043-o1 .submit {
+#form-donativos .submit {
 	text-align: center;
 }
 
-#wpcf7-f4020-p4043-o1 .submit .wpcf7-submit {
+#form-donativos .submit .wpcf7-submit {
 	text-transform: uppercase;
 	padding: 1rem 2rem;
 }
 
-#wpcf7-f4020-p4043-o1 .wpcf7-not-valid-tip {
+#form-donativos .wpcf7-not-valid-tip {
 	font-size: 0.9rem;
 	font-style: italic;
 	color: hsl(0deg 51% 63%);
 }
 
-#wpcf7-f4020-p4043-o1 .wpcf7-response-output {
+#form-donativos .wpcf7-response-output {
 	border-width: 0 !important;
 	border-left-width: 4px !important;
 	background: #f9f9f9;
 }
 
-#wpcf7-f4020-p4043-o1 .wpcf7 form.sent .wpcf7-response-output {
+#form-donativos .wpcf7 form.sent .wpcf7-response-output {
 	font-size: 2rem;
 	text-align: center;
 	color: #689f35;
 	border: none !important;
 	font-weight: bold;
+}
+
+/**
+* GiveWP customizations
+*/
+[name='give_comment'] {
+	width: 100% !important;
+	max-height: 250px !important;
+}
+
+#give-form-4327-wrap {
+	text-align: center;
+}
+
+#give-form-4327-wrap .give-form-title {
+	display: none;
+}
+
+#give-form-4327-wrap .give-donation-amount {
+	margin-bottom: 2rem;
+}
+
+#give-form-4327-wrap .give-donation-amount label {
+	display: block;
+}
+
+#give-form-4327-wrap .give-total-wrap {
+	display: inline-block !important;
+}
+
+#give-form-4327-wrap #give-donation-level-button-wrap {
+	display: flex;
+	align-items: stretch;
+}
+
+#give-form-4327-wrap #give-donation-level-button-wrap li {
+	padding: 2rem 1rem;
+	background: #f5f5f5;
+}
+
+#give-form-4327-wrap #give-donation-level-button-wrap li::before {
+	content: 'Quiero donar';
+	display: block;
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+
+#give-form-4327-wrap #give-donation-level-button-wrap li button {
+	background: none;
+	border: none;
+	color: #7b96a7;
+	padding: 0.5em 1em;
+	text-align: center;
+	display: block;
+	margin: 0;
+	width: 100%;
+	font-size: 2rem;
+}
+
+#give-form-4327-wrap #give-donation-level-button-wrap li:last-child button {
+	font-size: 1.7rem;
+	padding: 0 2em;
+	line-height: 1.2;
+}
+
+#give-form-4327-wrap #give-donation-level-button-wrap li button:hover,
+#give-form-4327-wrap #give-donation-level-button-wrap li button:focus,
+#give-form-4327-wrap #give-donation-level-button-wrap li button.give-default-level {
+	color: #689f35;
+}
+
+#give-form-4327-1 button.mfp-close {
+	background: none !important;
+	padding: 0 !important;
+	top: 1rem;
+	right: 1rem;
+}
+
+#give-form-4327-1 button.mfp-close:hover {
+	color: #071a3c !important;
+}
+
+#give-form-4327-1 .give-submit-button-wrap.give-clearfix {
+	display: flex !important;
+	justify-content: center;
+}
+
+#give_cc_address > legend {
+	display: none;
 }
