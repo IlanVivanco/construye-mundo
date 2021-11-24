@@ -46,4 +46,7 @@ function addtoany_disable_script_except_for_posts( $script_disabled ) {
 }
 add_filter( 'addtoany_script_disabled', 'addtoany_disable_script_except_for_posts' );
 
-
+/**
+ * Extend GiveWP plugin
+ */
+// require get_stylesheet_directory() . '/inc/give.php';
