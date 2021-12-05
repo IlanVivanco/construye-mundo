@@ -82,6 +82,37 @@ li.destacado .sub-arrow {
 	color: #000000;
 }
 
+.ast-blog-featured-section .posted-on .date-day {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.entry-content .read-more {
+	display: block;
+	margin-top: 2rem;
+}
+
+.menu-item button.ast-menu-toggle {
+	background: none;
+}
+
+.hosting {
+	font-size: 0.8rem;
+	color: white;
+}
+
+.hosting:hover,
+.hosting:focus,
+.hosting:active {
+	color: white;
+	opacity: 0.8;
+}
+
+.hosting img {
+	max-height: 2em;
+	width: auto;
+	margin-left: 0.4em;
+}
 /**
 * Galleries
 */
