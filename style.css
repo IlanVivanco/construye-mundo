@@ -74,6 +74,10 @@ li.destacado .sub-arrow {
 	margin: unset;
 }
 
+.footer-widget-area-inner #nav_menu-11 {
+	margin-bottom: 0;
+}
+
 .ast-footer-copyright a {
 	color: #9097aa;
 }
