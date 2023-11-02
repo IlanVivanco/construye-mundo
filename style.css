@@ -3,7 +3,7 @@ Theme Name: Construye Mundo
 Author: Ilán Vivanco
 Author URI: https://ilanvivanco.com
 Description: WordPress Child theme personalizado para la ONG Construye Mundo basado en Astra Theme.
-Version: 1.0.0
+Version: 1.1.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: construye-mundo
@@ -47,22 +47,40 @@ li.destacado .sub-arrow {
 	opacity: 0;
 }
 .main-header-bar.ast-sticky-active {
-	box-shadow: 0 2px 16px 0 rgb(36 50 66 / 5%), 0 2px 8px 0 rgb(36 50 66 / 5%), 0 2px 4px 0 rgb(36 50 66 / 5%),
-		0 2px 2px 0 rgb(36 50 66 / 5%);
+	box-shadow: 0 2px 16px 0 rgb(36 50 66 / 5%), 0 2px 8px 0 rgb(36 50 66 / 5%),
+		0 2px 4px 0 rgb(36 50 66 / 5%), 0 2px 2px 0 rgb(36 50 66 / 5%);
 	border: none;
 }
 
-[data-section='section-header-mobile-trigger'] .ast-button-wrap .mobile-menu-toggle-icon .ast-mobile-svg {
-	fill: #11469f;
+[data-section="section-header-mobile-trigger"]
+	.ast-button-wrap
+	.mobile-menu-toggle-icon
+	.ast-mobile-svg {
+	fill: #11469f !important;
 }
 
-.ast-theme-transparent-header .ast-builder-menu-1 .main-header-menu > .menu-item > .sub-menu,
-.ast-builder-menu-1 .main-header-menu > .menu-item > .astra-full-megamenu-wrapper {
+.ast-theme-transparent-header
+	.ast-builder-menu-1
+	.main-header-menu
+	> .menu-item
+	> .sub-menu,
+.ast-builder-menu-1
+	.main-header-menu
+	> .menu-item
+	> .astra-full-megamenu-wrapper {
 	margin-top: 40px;
 }
 
-.ast-theme-transparent-header.ast-desktop .ast-builder-menu-1 .main-header-menu > .menu-item > .sub-menu:before,
-.ast-desktop .ast-builder-menu-1 .main-header-menu > .menu-item > .astra-full-megamenu-wrapper:before {
+.ast-theme-transparent-header.ast-desktop
+	.ast-builder-menu-1
+	.main-header-menu
+	> .menu-item
+	> .sub-menu:before,
+.ast-desktop
+	.ast-builder-menu-1
+	.main-header-menu
+	> .menu-item
+	> .astra-full-megamenu-wrapper:before {
 	height: calc(40px + 5px);
 }
 
@@ -152,7 +170,8 @@ li.destacado .sub-arrow {
 /**
 * Forms
 */
-#form-newsletter {
+#form-newsletter,
+#form-newsletter > p {
 	display: flex;
 	align-items: center;
 	margin: 0;
@@ -168,16 +187,16 @@ li.destacado .sub-arrow {
 	border-radius: 3px;
 }
 
-#form-newsletter .wpcf7-email {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
+#form-newsletter .wpcf7-form-control-wrap {
+	margin-right: 1rem;
+}
+
+#form-newsletter .wpcf7-form-control-wrap input {
 	background: white;
 }
 
 #form-newsletter .wpcf7-submit {
 	background: #638dbe;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
 	font-weight: 500;
 }
 
@@ -260,7 +279,7 @@ li.destacado .sub-arrow {
 }
 
 #form-donativos #donation > span::before {
-	content: 'Quiero donar';
+	content: "Quiero donar";
 }
 
 #form-donativos #donation .last .wpcf7-list-item-label {
@@ -311,6 +330,12 @@ li.destacado .sub-arrow {
 #form-donativos fieldset > p > span {
 	width: calc((100% - 2rem) / 2) !important;
 	margin: 0.5rem;
+}
+
+#form-donativos fieldset > p > span[data-name="user_bank_auth"] {
+	width: 100% !important;
+	padding: 0.5rem;
+	font-size: 0.8rem;
 }
 
 #form-donativos span.user_bank_auth {
@@ -379,7 +404,7 @@ li.destacado .sub-arrow {
 /**
 * GiveWP customizations
 */
-[name='give_comment'] {
+[name="give_comment"] {
 	width: 100% !important;
 	max-height: 250px !important;
 }
@@ -415,7 +440,7 @@ li.destacado .sub-arrow {
 }
 
 #give-form-4327-wrap #give-donation-level-button-wrap li::before {
-	content: 'Quiero donar';
+	content: "Quiero donar";
 	display: block;
 	text-align: center;
 	margin-bottom: 0.5rem;
@@ -441,7 +466,10 @@ li.destacado .sub-arrow {
 
 #give-form-4327-wrap #give-donation-level-button-wrap li button:hover,
 #give-form-4327-wrap #give-donation-level-button-wrap li button:focus,
-#give-form-4327-wrap #give-donation-level-button-wrap li button.give-default-level {
+#give-form-4327-wrap
+	#give-donation-level-button-wrap
+	li
+	button.give-default-level {
 	color: #689f35;
 }
 
