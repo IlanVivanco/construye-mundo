@@ -401,98 +401,6 @@ li.destacado .sub-arrow {
 	font-weight: bold;
 }
 
-/**
-* GiveWP customizations
-*/
-[name="give_comment"] {
-	width: 100% !important;
-	max-height: 250px !important;
-}
-
-#give-form-4327-wrap {
-	text-align: center;
-}
-
-#give-form-4327-wrap .give-form-title {
-	display: none;
-}
-
-#give-form-4327-wrap .give-donation-amount {
-	margin-bottom: 2rem;
-}
-
-#give-form-4327-wrap .give-donation-amount label {
-	display: block;
-}
-
-#give-form-4327-wrap .give-total-wrap {
-	display: inline-block !important;
-}
-
-#give-form-4327-wrap #give-donation-level-button-wrap {
-	display: flex;
-	align-items: stretch;
-}
-
-#give-form-4327-wrap #give-donation-level-button-wrap li {
-	padding: 2rem 1rem;
-	background: #f5f5f5;
-}
-
-#give-form-4327-wrap #give-donation-level-button-wrap li::before {
-	content: "Quiero donar";
-	display: block;
-	text-align: center;
-	margin-bottom: 0.5rem;
-}
-
-#give-form-4327-wrap #give-donation-level-button-wrap li button {
-	background: none;
-	border: none;
-	color: #7b96a7;
-	padding: 0.5em 1em;
-	text-align: center;
-	display: block;
-	margin: 0;
-	width: 100%;
-	font-size: 2rem;
-}
-
-#give-form-4327-wrap #give-donation-level-button-wrap li:last-child button {
-	font-size: 1.7rem;
-	padding: 0 2em;
-	line-height: 1.2;
-}
-
-#give-form-4327-wrap #give-donation-level-button-wrap li button:hover,
-#give-form-4327-wrap #give-donation-level-button-wrap li button:focus,
-#give-form-4327-wrap
-	#give-donation-level-button-wrap
-	li
-	button.give-default-level {
-	color: #689f35;
-}
-
-#give-form-4327-1 button.mfp-close {
-	background: none !important;
-	padding: 0 !important;
-	top: 1rem;
-	right: 1rem;
-}
-
-#give-form-4327-1 button.mfp-close:hover {
-	color: #071a3c !important;
-}
-
-#give-form-4327-1 .give-submit-button-wrap.give-clearfix {
-	display: flex !important;
-	justify-content: center;
-}
-
-#give_cc_address > legend {
-	display: none;
-}
-
 /* Gravity */
 .construye-forms_wrapper .gfield--type-honeypot,
 .construye-forms_wrapper .gform_validation_errors {
@@ -587,4 +495,29 @@ li.destacado .sub-arrow {
 
 #gform_wrapper_2 #gform_fields_2 {
 	grid-row-gap: 1.5rem;
+}
+
+/* Donation Form */
+.donation-form_wrapper .gfield-choice-input:checked + label {
+	color: red;
+}
+
+.donation-form_wrapper #input_3_13 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.donation-form_wrapper #input_3_13 .gchoice {
+	width: 100%;
+	text-align: center;
+	padding: 1rem;
+	background: lightgray;
+	cursor: pointer;
+	display: block;
+}
+
+.donation-form_wrapper #input_3_13 input {
+	display: none;
 }
