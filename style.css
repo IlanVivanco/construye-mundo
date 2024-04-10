@@ -668,3 +668,7 @@ li.destacado .sub-arrow {
 		inline-size: 2em;
 	}
 }
+
+#cookie-law-info-again {
+	box-shadow: #16161633 2px 2px 5px 2px;
+}
