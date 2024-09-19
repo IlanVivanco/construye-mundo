@@ -474,7 +474,8 @@ li.destacado .sub-arrow {
 
 /* Guia viajes form */
 #gform_wrapper_2 #field_submit {
-	grid-column: 6 / span 2;
+	grid-column: 5 / span 4;
+	text-align: center;
 }
 
 #gform_wrapper_2 #gform_submit_button_2 {
