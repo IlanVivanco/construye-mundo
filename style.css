@@ -108,6 +108,10 @@ li.destacado .sub-arrow {
 	margin-top: 2rem;
 }
 
+.entry-content :where(h1, h2, h3, h4, h5, h6, figure) {
+	margin-block: 20px;
+}
+
 .menu-item button.ast-menu-toggle {
 	background: none;
 }
