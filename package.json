@@ -1,0 +1,20 @@
+{
+  "name": "construye-mundo",
+  "private": true,
+  "type": "module",
+  "description": "Construye Mundo child theme and Claude Code setup for construyemundo.org",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "setup": "npm install --no-fund --no-audit && playwright install chromium && node scripts/setup.mjs",
+    "wp": "node scripts/wp.mjs"
+  },
+  "dependencies": {
+    "@automattic/mcp-wordpress-remote": "0.4.0"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "playwright": "^1.63.0"
+  }
+}

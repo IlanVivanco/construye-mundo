@@ -1,0 +1,8 @@
+.env
+node_modules/
+artifacts/*
+!artifacts/.gitkeep
+
+# Share the project's skills, keep local settings private
+!.claude/
+.claude/settings.local.json
