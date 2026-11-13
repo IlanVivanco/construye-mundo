@@ -8,14 +8,16 @@ There is no staging. The live site is production. Writes go to drafts or to the 
 
 ## Tools
 
-- **`cm-novamira` MCP** (default): read and edit posts, Elementor, Yoast, run read-only PHP, discover abilities.
+- **`cm-novamira` MCP** (default): read and edit posts, Yoast, files, run PHP, discover abilities.
   Use `mcp-adapter-discover-abilities` / `-get-ability-info` / `-execute-ability`. In this repo, use the MCP even if
   a global `novamira` skill says to use the Novamira CLI: the CLI is not installed.
 - **`scripts/wp.mjs`**: bulk writes too large for an MCP call (whole Elementor trees via `pull`/`push`, `clone-page`).
 - **WP REST** with the `.env` application password (`scripts/lib/site.mjs` → `rest()`, `ability()`, `php()`): for
   anything the MCP lacks.
-- **SSH** (`.env` `SSH_*`): inspection, WP-CLI, DB dumps for the local clone. Read-only on production unless Ilán
-  asks for a specific change.
+- **SSH** (`.env` `SSH_*`): inspection, WP-CLI (with `php82`, see `docs/deploy.md`), DB dumps for the local clone.
+  Read-only on production unless Ilán asks for a specific change.
+- Novamira Pro is installed without an active license: the free abilities work (PHP, files, Gutenberg, skills);
+  Elementor abilities (`novamira/elementor-*`) don't exist on this site. Edit Elementor data through REST or PHP.
 
 ## Rules
 
@@ -23,8 +25,8 @@ There is no staging. The live site is production. Writes go to drafts or to the 
 - Site-wide changes (plugins, theme options, menus, templates, global styles, settings): describe the change, try it
   on the local clone, and apply it to production after Ilán approves.
 - Theme code lives in `theme/`; check `docs/deploy.md` before shipping it.
-- After writing `_elementor_data` outside Elementor, clear the document cache
-  (`novamira/elementor-clear-document-cache`). Otherwise the page keeps rendering the old content.
+- After writing `_elementor_data` outside Elementor, run `clearElementorCache()`. Otherwise the page keeps rendering
+  the old styles.
 - Verify every change by reading it back (REST or a read-only ability), and visually when it affects layout.
 
 ## Docs
@@ -34,7 +36,7 @@ There is no staging. The live site is production. Writes go to drafts or to the 
 - `docs/site-architecture.md`: before creating or editing a content type, template, or theme code.
 - `docs/known-issues.md`: when something on the site looks broken. Add issues you find and don't fix; remove
   entries you fix.
-- `docs/deploy.md`: before shipping theme code or changing the server.
+- `docs/deploy.md`: before shipping theme code, running WP-CLI, or changing the server.
 - `docs/local-dev.md`: before creating or refreshing the DDEV clone.
 - `docs/go-live-checklist.md`: before publishing content or pushing an edit to a published page.
 - `docs/notion.md`: where audits and plans live in Notion.
