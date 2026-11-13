@@ -1,0 +1,42 @@
+{
+  "skill_name": "discover-design-system",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up our design system doc from what the site actually uses.",
+      "expected_output": "A references file covering every template family, a generated design inventory (md and json), drift decisions confirmed with the user, and a design-system doc built from the template.",
+      "files": [],
+      "expectations": [
+        "Built the references list from the site inventory's template families, one reference each, and got the user's agreement",
+        "Ran ${CLAUDE_SKILL_DIR}/scripts/design-system.mjs and produced the inventory dated today with rendered styles for every reference",
+        "Asked the user to decide each drift candidate with a recommendation, in one round",
+        "The design-system doc names where each value lives (kit global, theme option, CSS file, hardcoded)",
+        "Made no changes to the site's kit, theme settings, or CSS"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "What's our standard container width and heading scale? Something looks inconsistent.",
+      "expected_output": "The standard values from the design-system doc, backed by the inventory's foundations, stored, and rendered values, with the inconsistencies explained.",
+      "files": [],
+      "expectations": [
+        "Read the design-system doc and the inventory (or reran the script if stale)",
+        "Listed every place the container width is defined (builder kit, theme option, stored, rendered)",
+        "Gave rendered H1 and H2 sizes per breakpoint and the references that differ",
+        "Recommended a standard where the doc has none, without changing the site"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We changed the kit colors and launched a new landing page template. Update the design docs.",
+      "expected_output": "References updated with the new template, a regenerated inventory, a diff summary, and the design-system doc updated.",
+      "files": [],
+      "expectations": [
+        "Added a reference for the new landing page template",
+        "Reran the script and summarized the changes with git diff",
+        "Updated the color roles in the design-system doc to the new kit values",
+        "Listed new drift candidates for the user to decide"
+      ]
+    }
+  ]
+}

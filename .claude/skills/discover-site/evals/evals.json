@@ -1,0 +1,42 @@
+{
+  "skill_name": "discover-site",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're starting work on this WordPress site. Map how it's built and set up the architecture docs.",
+      "expected_output": "A generated site inventory (md and json) and a hand-written architecture doc that explains each content type and template family, with open questions listed.",
+      "files": [],
+      "expectations": [
+        "Ran ${CLAUDE_SKILL_DIR}/scripts/site.mjs and produced <inventory>.md and <inventory>.json dated today",
+        "Named the active theme and its parent theme from the inventory, not from assumptions",
+        "Looked up templates without display conditions and menus inside page-builder headers with read-only calls",
+        "The architecture doc covers every content type in the inventory and points to the inventory for lists",
+        "Made no write calls to the site"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Which plugins and theme does the site run, and which templates render the blog?",
+      "expected_output": "An answer drawn from the site inventory (rerun if missing or stale): active theme and parent, active plugins, and the templates that render single posts and the blog archive.",
+      "files": [],
+      "expectations": [
+        "Used the existing inventory if current, or ran the script",
+        "Named the theme, its parent, and the page builder with versions",
+        "Identified the single-post and archive templates and their display conditions",
+        "Did not edit the architecture doc unless something in it was wrong"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We just switched a plugin and added a content type. Refresh the site docs.",
+      "expected_output": "A refreshed inventory, a git diff summary of what changed, and the architecture doc updated for the new content type.",
+      "files": [],
+      "expectations": [
+        "Reran the script and compared the new inventory with the previous one (git diff)",
+        "Reported added, removed, or changed plugins, content types, and templates",
+        "Added the new content type to the architecture doc",
+        "Flagged anything that looks broken (dead conditions, inactive plugins still referenced)"
+      ]
+    }
+  ]
+}
