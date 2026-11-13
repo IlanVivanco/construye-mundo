@@ -15,3 +15,7 @@ Theme behaviour worth knowing:
 - AddToAny's script loads only on single posts and archives.
 
 The rest (content types, templates, menus) is TBD until `discover-site` runs.
+
+## Redirects
+
+The Redirection plugin holds the 301s (group "Redirecciones" for new ones; "Joomla" holds the old site's URLs). `/colabora/turismo-ong-antigua/` (draft page 3612) goes to `/colabora/turismo-ong/` (rule 1022, 2026-11-14).
