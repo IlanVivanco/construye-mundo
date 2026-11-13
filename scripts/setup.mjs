@@ -44,8 +44,9 @@ try {
 }
 
 try {
-  const info = await ability("novamira/elementor-check-setup");
-  console.log(`✓ Novamira: abilities reachable (Elementor ${info.elementor?.version})`);
+  const ctx = await ability("novamira/agent-context");
+  const pro = /Pro\b[^\n]*license not active/.test(ctx.instructions || "") ? " (Pro license not active: no Elementor abilities)" : "";
+  console.log(`✓ Novamira: abilities reachable, v${ctx.server?.plugin_version}${pro}`);
 } catch (e) {
   console.error(`✗ Novamira: ${e.message}\n  Your user may lack permission, or the plugin is inactive.`);
   process.exit(1);
