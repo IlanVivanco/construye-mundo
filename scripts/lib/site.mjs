@@ -108,26 +108,14 @@ export async function php(code) {
   return res?.return_value ?? res;
 }
 
-// Elementor compiles each document's CSS (element styles and page custom CSS) into a file that REST meta writes
-// don't refresh: after writing `_elementor_data` or `_elementor_page_settings` through REST the page keeps the old
-// styles. Any Novamira write regenerates the file, so an empty edit of the first element refreshes it.
-export async function refreshElementorCss(postId, tree) {
-  if (tree?.[0]?.id) await ability("novamira/elementor-edit-element", { post_id: Number(postId), element_id: tree[0].id, settings: {} });
+// Elementor compiles each document's CSS into a file that REST meta writes don't refresh: after writing
+// `_elementor_data` or `_elementor_page_settings` through REST the page keeps the old styles. The Novamira Elementor
+// abilities are Pro (unlicensed on this site), so this clears the post's CSS meta and Elementor's file cache in PHP.
+export async function refreshElementorCss(postId) {
   await clearElementorCache(postId);
 }
 
-// Writes a new Elementor tree with validation: set-content checks every control against the widget schemas,
-// regenerates the CSS, and reports fields Elementor dropped. Trees copied from existing pages can carry keys of
-// inactive add-ons that fail validation; write those through REST and call refreshElementorCss instead.
-export async function writeElementorTree(postId, tree) {
-  const res = await ability("novamira/elementor-set-content", { post_id: Number(postId), content: tree });
-  for (const k of ["warnings", "not_persisted"]) {
-    if (res?.[k]) console.warn(`WARNING ${k}: ${JSON.stringify(res[k]).slice(0, 2000)}`);
-  }
-  await clearElementorCache(postId);
-  return res;
-}
-
-// Elementor caches rendered elements per post; raw _elementor_data writes must clear it.
 export const clearElementorCache = (...postIds) =>
-  ability("novamira/elementor-clear-document-cache", { post_ids: postIds.map(Number) });
+  php(`foreach ([${postIds.map(Number).join(",")}] as $id) { delete_post_meta($id, '_elementor_css'); delete_post_meta($id, '_elementor_element_cache'); }
+\\Elementor\\Plugin::$instance->files_manager->clear_cache();
+return true;`);
