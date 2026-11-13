@@ -36,6 +36,14 @@ const slug = new URL(url).pathname.replace(/^\/|\/$/g, "").replace(/[^a-z0-9]+/g
 const outDir = resolve(opt.out || join(env.QA_OUT || "qa", `${new Date().toISOString().slice(0, 10)}-${slug}`));
 mkdirSync(outDir, { recursive: true });
 
+// Pages with long-lived connections (payment widgets, chat, analytics beacons) never reach network idle: wait for
+// load, then give the network a few seconds to settle.
+async function gotoSettled(page, url) {
+  const res = await page.goto(url, { waitUntil: "load", timeout: 60_000 });
+  await page.waitForLoadState("networkidle", { timeout: 8_000 }).catch(() => {});
+  return res;
+}
+
 const checks = [];
 const check = (area, status, msg) => checks.push({ area, status, msg });
 const { chromium } = await import("playwright");
@@ -52,7 +60,7 @@ try {
   page.on("pageerror", (e) => consoleErrors.push(String(e).slice(0, 200)));
   page.on("requestfailed", (r) => failed.push(`${r.failure()?.errorText} ${r.url().slice(0, 150)}`));
   page.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url().slice(0, 150)}`));
-  const res = await page.goto(url, { waitUntil: "networkidle", timeout: 60_000 });
+  const res = await gotoSettled(page, url);
   const status = res?.status();
   check("status", status === 200 ? "pass" : "fail", `HTTP ${status} for ${url}`);
 
@@ -153,7 +161,7 @@ try {
   // --- every width: screenshot and horizontal overflow ----------------------------------------
   for (const width of widths) {
     const p = await browser.newPage({ viewport: { width, height: 900 } });
-    await p.goto(url, { waitUntil: "networkidle", timeout: 60_000 });
+    await gotoSettled(p, url);
     const overflow = await p.evaluate(async () => {
       for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 120)); }
       window.scrollTo(0, 0);
