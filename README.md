@@ -18,4 +18,5 @@ You need Node.js 22+, Claude Code, and the Novamira plugin active on the site.
 
 ## Local clone
 
-DDEV project `construye-mundo` in `~/ddev/construye-mundo/`. Setup and refresh steps: `docs/local-dev.md`.
+DDEV project `construye-mundo` in `~/ddev/construye-mundo/` (https://construye-mundo.ddev.site). Refresh it from
+production with `scripts/clone-refresh.sh`; setup and details in `docs/local-dev.md`.
