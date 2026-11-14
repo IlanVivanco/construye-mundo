@@ -18,11 +18,15 @@ The rest (content types, templates, menus) is TBD until `discover-site` runs.
 
 ## Redirects
 
-The Redirection plugin holds the 301s (group "Redirecciones" for new ones; "Joomla" holds the old site's URLs). `/colabora/turismo-ong-antigua/` (draft page 3612) goes to `/colabora/turismo-ong/` (rule 1022, 2026-11-14).
+The Redirection plugin holds the 301s (group "Redirecciones" for new ones; "Joomla" holds the old site's URLs). `/colabora/turismo-ong-antigua/` (draft page 3612) goes to `/colabora/turismo-ong/` (rule 1022, 2026-11-14), and so does `/colabora/turismo-solidario-senegal/` (draft
+landing 4977, rule 1023).
 
 ## Page cache
 
-WP Fastest Cache (free) serves cached HTML through `.htaccess`; mobile visitors get no cache. Set up 2026-11-14:
+WP Fastest Cache (free) serves cached HTML through `.htaccess`; mobile visitors get no cache ("Mobile" option on: in
+the free version that means mobile user agents skip the cache). Astra picks the body class `ast-header-break-point` or
+`ast-desktop` with `wp_is_mobile()`, so cached desktop HTML served to phones starts with the desktop class until
+Astra's JS corrects it. Test that on the clone before turning mobile caching on. Set up 2026-11-14:
 
 - Pages with a Gravity Forms form are excluded (exact rules): `colabora`, `colabora/turismo-ong` and the crowdfunding
   page. Add any new page with a form to the exclusions, or its cached nonce breaks the form after a day.
