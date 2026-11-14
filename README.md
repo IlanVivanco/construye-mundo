@@ -4,6 +4,7 @@ WordPress child theme for the NGO Construye Mundo (construyemundo.org), based on
 work on the site.
 
 - `theme/`: the child theme. This is what gets deployed (`docs/deploy.md`).
+- `mu-plugins/`: must-use plugins deployed to `wp-content/mu-plugins/` (`docs/deploy.md`).
 - `scripts/`, `.claude/`, `docs/`: tooling and knowledge for working on the site with Claude.
 
 ## Get started
