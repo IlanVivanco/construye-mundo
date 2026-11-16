@@ -21,9 +21,9 @@ every push to `main` that touches `theme/` or `mu-plugins/`: PHP 8.2 lint, theme
 rsync without it (the server folder also has Elementor's `elementor-safe-mode.php`), page cache purge, and a 200 check
 on the home and `/colabora/`. Run it by hand from the Actions tab; manual runs default to a dry run.
 
-GitHub settings (environment `production`): secret `SSH_PRIVATE_KEY` (a deploy-only key, its public half in the
-server's `~/.ssh/authorized_keys` with the comment `github-deploy-construye-mundo`), variables `SSH_HOST`, `SSH_USER`
-and `SSH_KNOWN_HOSTS` (the `ssh-keyscan` lines, checked against your own `known_hosts`).
+GitHub settings: environment `production`, which only `main` can deploy to. Secret `SSH_PRIVATE_KEY` is Ilán's own
+SSH key (`~/.ssh/id_rsa`, his choice over a deploy-only key): when he rotates that key, update the secret. Variables
+`SSH_HOST`, `SSH_USER` and `SSH_KNOWN_HOSTS` (the `ssh-keyscan` lines, checked against your own `known_hosts`).
 
 A file deleted from `mu-plugins/` stays on the server: delete it there by hand. The rest of the repo is tooling and
 never ships.
