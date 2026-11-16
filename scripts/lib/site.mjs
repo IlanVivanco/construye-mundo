@@ -110,7 +110,8 @@ export async function php(code) {
 
 // Elementor compiles each document's CSS into a file that REST meta writes don't refresh: after writing
 // `_elementor_data` or `_elementor_page_settings` through REST the page keeps the old styles. The Novamira Elementor
-// abilities are Pro (unlicensed on this site), so this clears the post's CSS meta and Elementor's file cache in PHP.
+// abilities regenerate CSS on their own writes, but not on these, so this clears the post's CSS meta and Elementor's
+// file cache in PHP.
 export async function refreshElementorCss(postId) {
   await clearElementorCache(postId);
 }

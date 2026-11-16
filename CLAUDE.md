@@ -16,8 +16,9 @@ There is no staging. The live site is production. Writes go to drafts or to the 
   anything the MCP lacks.
 - **SSH** (`.env` `SSH_*`): inspection, WP-CLI (with `php82`, see `docs/deploy.md`), DB dumps for the local clone.
   Read-only on production unless Ilán asks for a specific change.
-- Novamira Pro is installed without an active license: the free abilities work (PHP, files, Gutenberg, skills);
-  Elementor abilities (`novamira/elementor-*`) don't exist on this site. Edit Elementor data through REST or PHP.
+- Novamira Pro is licensed (since 2026-11-16): edit Elementor through `novamira/elementor-*`, which regenerate the
+  page CSS themselves. Pro also has `astra-*`, `gravityforms-*` and `yoast-*`; prefer them over Yoast's own
+  `yoast-seo/*` abilities, which overlap.
 
 ## Rules
 
@@ -25,8 +26,8 @@ There is no staging. The live site is production. Writes go to drafts or to the 
 - Site-wide changes (plugins, theme options, menus, templates, global styles, settings): describe the change, try it
   on the local clone, and apply it to production after Ilán approves.
 - Theme code lives in `theme/`, must-use plugins in `mu-plugins/`; check `docs/deploy.md` before shipping either.
-- After writing `_elementor_data` outside Elementor, run `clearElementorCache()`. Otherwise the page keeps rendering
-  the old styles.
+- After writing `_elementor_data` outside Elementor or the Novamira abilities, run `clearElementorCache()`.
+  Otherwise the page keeps rendering the old styles.
 - Verify every change by reading it back (REST or a read-only ability), and visually when it affects layout.
 
 ## Docs
