@@ -5,7 +5,7 @@ name: Deploy
 on:
   push:
     branches: [main]
-    paths: ['theme/**', 'mu-plugins/**']
+    paths: ["theme/**", "mu-plugins/**"]
   workflow_dispatch:
     inputs:
       dry_run:
@@ -22,7 +22,7 @@ env:
   SSH_USER: construyemundo
   BASE_PATH: /home/construyemundo/www
   # The action's Docker image has PHP 8.3+; production runs 8.2, so the lint runs in its own step.
-  PHP_VERSION: '8.2'
+  PHP_VERSION: "8.2"
   # A push deploys for real. A manual run deploys for real only with dry_run unchecked.
   DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
 
