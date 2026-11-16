@@ -1,6 +1,6 @@
 # Construye Mundo
 
-Claude works on construyemundo.org (WordPress on shared hosting, Astra parent + the child theme in `theme/`) from
+Claude works on construyemundo.org (WordPress on shared hosting, Astra parent + the child theme in `src/theme/`) from
 this repo. The site is Ilán's: the NGO Construye Mundo. Site content is in Spanish; write copy in Spanish.
 
 There is no staging. The live site is production. Writes go to drafts or to the local DDEV clone
@@ -25,7 +25,8 @@ There is no staging. The live site is production. Writes go to drafts or to the 
 - Create drafts. Publish, or edit a published item, only when Ilán asks for that item.
 - Site-wide changes (plugins, theme options, menus, templates, global styles, settings): describe the change, try it
   on the local clone, and apply it to production after Ilán approves.
-- Theme code lives in `theme/`, must-use plugins in `mu-plugins/`; check `docs/deploy.md` before shipping either.
+- `src/` holds only what ships to the server (`src/theme/`, `src/mu-plugins/`); the rest of the repo is tooling.
+  Check `docs/deploy.md` before shipping.
 - After writing `_elementor_data` outside Elementor or the Novamira abilities, run `clearElementorCache()`.
   Otherwise the page keeps rendering the old styles.
 - Verify every change by reading it back (REST or a read-only ability), and visually when it affects layout.

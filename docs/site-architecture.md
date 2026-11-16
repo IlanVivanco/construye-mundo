@@ -5,7 +5,7 @@ How the site is built and how to work with each part. Lists (plugins, templates,
 
 ## Stack
 
-Astra parent + Astra Pro, child theme `theme/` (styles in `style.css`, small tweaks in `functions.php`). Elementor +
+Astra parent + Astra Pro, child theme `src/theme/` (styles in `style.css`, small tweaks in `functions.php`). Elementor +
 Pro. SEO: Yoast. Cookies: Complianz. Images: Smush. Analytics: Site Kit + GTM4WP. Redirects: Redirection. Shared
 hosting (Dinahosting, to be confirmed in `docs/deploy.md`).
 

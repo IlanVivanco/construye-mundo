@@ -24,8 +24,8 @@ Test donations work locally with Stripe's test cards (the test keys come from pr
 
 ## Repo mounts
 
-`.ddev/docker-compose.repo-mounts.yaml` mounts `theme/` as `wp-content/themes/construye-mundo/` and each file of
-`mu-plugins/` into `wp-content/mu-plugins/`, so repo edits show up in the clone without copying. A new mu-plugin needs
+`.ddev/docker-compose.repo-mounts.yaml` mounts `src/theme/` as `wp-content/themes/construye-mundo/` and each file of
+`src/mu-plugins/` into `wp-content/mu-plugins/`, so repo edits show up in the clone without copying. A new mu-plugin needs
 its own line there and a `ddev restart`.
 
 ## First-time setup
