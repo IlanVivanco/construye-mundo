@@ -1,0 +1,39 @@
+{
+  "skill_name": "qa-page",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "QA this page before we publish it: <published or preview URL>",
+      "expected_output": "A QA report with screenshots at every width, the project's go-live checklist worked through, and a summary that lists failures first with their cause (this page or site-wide) and a recommended fix.",
+      "files": [],
+      "expectations": [
+        "Ran ${CLAUDE_SKILL_DIR}/scripts/qa.mjs with the expected robots for the page type",
+        "Looked at every screenshot and mentioned layout problems or confirmed there are none",
+        "Marked every go-live checklist item for the content type as pass, fail, or not applicable",
+        "Separated page problems from site-wide ones, and did not change the site"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Is this draft OK? <dashboard URL of an Elementor draft>",
+      "expected_output": "A public preview link is created for the draft, then the same QA as for a published page.",
+      "files": [],
+      "expectations": [
+        "Recognized that a dashboard or login-only URL won't load in the script's browser",
+        "Created a public preview link and confirmed it returns 200 before running the checks",
+        "Expected noindex if the draft is test content"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Check the mobile layout of <URL>, something overflows.",
+      "expected_output": "The QA run at the mobile and tablet widths, the elements that extend past the viewport, and the screenshots reviewed for that area.",
+      "files": [],
+      "expectations": [
+        "Ran the script with the project's widths, or narrowed --widths to the reported viewports",
+        "Named the overflowing elements from the layout check",
+        "Reviewed the screenshot at the affected width and described where the overflow appears"
+      ]
+    }
+  ]
+}

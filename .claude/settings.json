@@ -1,0 +1,12 @@
+{
+  "env": {
+    "WP_ADAPTER": "scripts/lib/site.mjs",
+    "SITE_INVENTORY": "docs/site-inventory",
+    "DESIGN_REFERENCES": "docs/design-references.json",
+    "DESIGN_INVENTORY": "docs/design-inventory",
+    "QA_OUT": "artifacts/qa",
+    "QA_WIDTHS": "390,768,1024,1440",
+    "QA_FORBID_HOSTS": "",
+    "QA_FORBID_TEXT": "Lorem ipsum"
+  }
+}

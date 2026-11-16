@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "cm-novamira": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["scripts/novamira-mcp.mjs"]
+    }
+  }
+}
