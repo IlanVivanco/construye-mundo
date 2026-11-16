@@ -22,8 +22,10 @@ rsync without it (the server folder also has Elementor's `elementor-safe-mode.ph
 on the home and `/colabora/`. Run it by hand from the Actions tab; manual runs default to a dry run.
 
 GitHub settings: environment `production`, which only `main` can deploy to. Secret `SSH_PRIVATE_KEY` is Ilán's own
-SSH key (`~/.ssh/id_rsa`, his choice over a deploy-only key): when he rotates that key, update the secret. Variables
-`SSH_HOST`, `SSH_USER` and `SSH_KNOWN_HOSTS` (the `ssh-keyscan` lines, checked against your own `known_hosts`).
+SSH key (`~/.ssh/id_rsa`, his choice over a deploy-only key): when he rotates that key, update the secret. Host,
+user, path and the server's host key are in the workflow itself. If Dinahosting changes the host key (a server
+migration), the deploy fails with a host key error: check the new key against your own `known_hosts` and update
+`SSH_KNOWN_HOSTS`.
 
 A file deleted from `mu-plugins/` stays on the server: delete it there by hand. The rest of the repo is tooling and
 never ships.
