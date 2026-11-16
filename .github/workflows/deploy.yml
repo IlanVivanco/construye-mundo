@@ -21,8 +21,6 @@ env:
   SSH_HOST: construyemundo.org
   SSH_USER: construyemundo
   BASE_PATH: /home/construyemundo/www
-  # The server's public host key, so the deploy refuses to connect to anything else (docs/deploy.md).
-  SSH_KNOWN_HOSTS: construyemundo.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA4g2IzS3wtEQ/KvzdYqVkobhxWBaUjlCFC2zl9UX9I
   # The action's Docker image has PHP 8.3+; production runs 8.2, so the lint runs in its own step.
   PHP_VERSION: '8.2'
   # A push deploys for real. A manual run deploys for real only with dry_run unchecked.
@@ -52,7 +50,6 @@ jobs:
           SSH_USER: ${{ env.SSH_USER }}
           BASE_PATH: ${{ env.BASE_PATH }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{ env.SSH_KNOWN_HOSTS }}
           SRC_PATH: theme
           REMOTE_PATH: wp-content/themes/construye-mundo
           FLAGS: -azvrhi --inplace --delete --exclude='.*' --exclude=phpcs.xml
@@ -67,7 +64,6 @@ jobs:
           SSH_USER: ${{ env.SSH_USER }}
           BASE_PATH: ${{ env.BASE_PATH }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{ env.SSH_KNOWN_HOSTS }}
           SRC_PATH: mu-plugins
           REMOTE_PATH: wp-content/mu-plugins
           DRY_RUN: ${{ env.DRY_RUN }}

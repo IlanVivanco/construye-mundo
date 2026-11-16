@@ -23,9 +23,8 @@ on the home and `/colabora/`. Run it by hand from the Actions tab; manual runs d
 
 GitHub settings: environment `production`, which only `main` can deploy to. Secret `SSH_PRIVATE_KEY` is Ilán's own
 SSH key (`~/.ssh/id_rsa`, his choice over a deploy-only key): when he rotates that key, update the secret. Host,
-user, path and the server's host key are in the workflow itself. If Dinahosting changes the host key (a server
-migration), the deploy fails with a host key error: check the new key against your own `known_hosts` and update
-`SSH_KNOWN_HOSTS`.
+user and path are in the workflow itself. The host key isn't pinned (Ilán's choice): the action trusts the key the
+server presents, so a Dinahosting server change needs no update.
 
 A file deleted from `mu-plugins/` stays on the server: delete it there by hand. The rest of the repo is tooling and
 never ships.
