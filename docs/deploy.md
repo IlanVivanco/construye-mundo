@@ -16,14 +16,20 @@ holds the Apache logs, read-only). The log before 2026-11-14, without the Photo 
 
 ## Deploy
 
-Manual: the theme on the server (`wp-content/themes/construye-mundo/`) is not a git checkout, there is no cron, and
-the GitHub repo has no workflows or webhooks. Ship `theme/` and `mu-plugins/`; the rest of the repo is tooling.
+Automatic: `.github/workflows/deploy.yml` (Ilán's `IlanVivanco/wp-deployment-action`, `SERVER_TYPE: custom`) runs on
+every push to `main` that touches `theme/` or `mu-plugins/`: PHP 8.2 lint, theme rsync with `--delete`, mu-plugins
+rsync without it (the server folder also has Elementor's `elementor-safe-mode.php`), page cache purge, and a 200 check
+on the home and `/colabora/`. Run it by hand from the Actions tab; manual runs default to a dry run.
 
-`mu-plugins/` holds single files, copied one by one (no `--delete`: the server folder also has Elementor's
-`elementor-safe-mode.php`): `scp mu-plugins/<file> <user>@<host>:<wp path>/wp-content/mu-plugins/`. Delete a file on
-the server when you delete it from the repo.
+GitHub settings (environment `production`): secret `SSH_PRIVATE_KEY` (a deploy-only key, its public half in the
+server's `~/.ssh/authorized_keys` with the comment `github-deploy-construye-mundo`), variables `SSH_HOST`, `SSH_USER`
+and `SSH_KNOWN_HOSTS` (the `ssh-keyscan` lines, checked against your own `known_hosts`).
 
-Theme:
+A file deleted from `mu-plugins/` stays on the server: delete it there by hand. The rest of the repo is tooling and
+never ships.
+
+Manual fallback, when Actions is down or for a hotfix. mu-plugins, one file at a time:
+`scp mu-plugins/<file> <user>@<host>:<wp path>/wp-content/mu-plugins/`. Theme:
 
 1. Back up the server copy outside the webroot: `cp -a <wp path>/wp-content/themes/construye-mundo
    ~/theme-backups/construye-mundo-<yyyymmdd>`.
@@ -33,5 +39,5 @@ Theme:
 3. Check the home and a post return 200 and the served `style.css` has the change.
 4. Purge the page cache (`docs/site-architecture.md`, Page cache): an rsync doesn't trigger it.
 
-Roll back by syncing the backup folder back. Last reconciled 2026-11-13 (backup `construye-mundo-20261113`); the
-server had dead files (`admin.css`, `inc/give.php` from GiveWP) and was missing the last commit.
+Roll back by reverting the commit on `main` (the workflow redeploys), or by syncing a backup folder back. Last
+reconciled by hand 2026-11-13 (backup `construye-mundo-20261113`); the server had dead files (`admin.css`, `inc/give.php` from GiveWP) and was missing the last commit.

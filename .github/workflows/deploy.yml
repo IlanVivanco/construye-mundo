@@ -1,0 +1,80 @@
+# Deploys theme/ and mu-plugins/ to production (docs/deploy.md). Runs on every push to main that touches them, or by
+# hand from the Actions tab, where "dry_run" shows what would change without touching the server.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths: ['theme/**', 'mu-plugins/**']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Only show what would change
+        type: boolean
+        default: true
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+env:
+  # The action's Docker image has PHP 8.3+; production runs 8.2, so the lint runs in its own step.
+  PHP_VERSION: '8.2'
+  # A push deploys for real. A manual run deploys for real only with dry_run unchecked.
+  DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          tools: none
+
+      - name: Check PHP syntax
+        run: find theme mu-plugins -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      # The theme folder is the repo's: --delete removes server files the repo lacks.
+      - name: Deploy theme
+        uses: IlanVivanco/wp-deployment-action@v2
+        with:
+          SERVER_TYPE: custom
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
+          BASE_PATH: /home/construyemundo/www
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
+          SRC_PATH: theme
+          REMOTE_PATH: wp-content/themes/construye-mundo
+          FLAGS: -azvrhi --inplace --delete --exclude='.*' --exclude=phpcs.xml
+          DRY_RUN: ${{ env.DRY_RUN }}
+
+      # No --delete: the server folder also holds Elementor's elementor-safe-mode.php.
+      - name: Deploy mu-plugins and purge the page cache
+        uses: IlanVivanco/wp-deployment-action@v2
+        with:
+          SERVER_TYPE: custom
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
+          BASE_PATH: /home/construyemundo/www
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
+          SRC_PATH: mu-plugins
+          REMOTE_PATH: wp-content/mu-plugins
+          DRY_RUN: ${{ env.DRY_RUN }}
+          CACHE_CLEAR: TRUE
+          # The server's default php is 7.0, which breaks WordPress.
+          CACHE_COMMAND: cd ~/www && php82 /usr/local/bin/wp eval '$GLOBALS["wp_fastest_cache"]->deleteCache(true); echo "Page cache purged\n";' 2>/dev/null
+
+      - name: Check the site responds
+        if: env.DRY_RUN != 'true'
+        run: |
+          for url in https://construyemundo.org/ https://construyemundo.org/colabora/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$url")
+            echo "$url $code"
+            [ "$code" = 200 ] || exit 1
+          done
