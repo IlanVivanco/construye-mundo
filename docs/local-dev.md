@@ -35,7 +35,8 @@ them with `ddev wp plugin install <zip> --force`. Take `ddev snapshot` first; af
 
 `.ddev/docker-compose.repo-mounts.yaml` mounts `src/theme/` as `wp-content/themes/construye-mundo/` and each file of
 `src/mu-plugins/` into `wp-content/mu-plugins/`, so repo edits show up in the clone without copying. A new mu-plugin needs
-its own line there and a `ddev restart`. Restart too after a mounted path moves in the repo: the old mount stays empty.
+its own line there and a `ddev restart`. Restart too after a mounted path moves in the repo (the old mount stays empty) or when a mounted mu-plugin file
+stops picking up edits (single-file mounts go stale when the file is replaced).
 
 ## First-time setup
 

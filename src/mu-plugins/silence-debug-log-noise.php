@@ -8,6 +8,8 @@
  *   99.9 % of debug.log by November 2026.
  * - Photo Gallery's bundled 10Web library creates dynamic properties: PHP 8.2 deprecations from
  *   `photo-gallery/wd/`, ~700 a day.
+ * - Elementor 4.4+ and Novamira Pro both register the `elementor` abilities category: a "category already registered"
+ *   notice on every request since 2026-11-17. The first registration wins; nothing breaks.
  *
  * Delete each rule when its plugin is removed or fixed; delete the file when no rule is left.
  */
@@ -18,6 +20,9 @@ add_filter(
 	'doing_it_wrong_trigger_error',
 	static function ( $trigger, $function_name, $message ) {
 		if ( '_load_textdomain_just_in_time' === $function_name && str_contains( $message, '<code>photo-gallery</code>' ) ) {
+			return false;
+		}
+		if ( 'WP_Ability_Categories_Registry::register' === $function_name && str_contains( $message, 'elementor' ) ) {
 			return false;
 		}
 		return $trigger;
