@@ -9,7 +9,8 @@ WP-CLI: the default `php` is 7.0 and breaks WordPress, so run it with PHP 8.2:
 `ssh <user>@<host> "cd <wp path> && php82 /usr/local/bin/wp <command>"`. Plugin notices print on every call; ignore
 them unless they are the point.
 
-Debug log: `WP_DEBUG_LOG` writes to `~/wp-logs/wp-debug.log`, outside the webroot (`~/logs` belongs to the host and
+Debug log: `WP_DEBUG` stays on in production (Ilán's choice, 2026-11-17); `src/mu-plugins/silence-debug-log-noise.php` drops
+known plugin noise so the log stays small. `WP_DEBUG_LOG` writes to `~/wp-logs/wp-debug.log`, outside the webroot (`~/logs` belongs to the host and
 holds the Apache logs, read-only). The log before 2026-11-14, without the Photo Gallery noise, is
 `~/wp-logs/debug-2025-07_2026-11-sin-photo-gallery.log.gz`. `wp-config.php` backup before these changes:
 `~/theme-backups/wp-config-20261114.php`.

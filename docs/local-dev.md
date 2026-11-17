@@ -20,13 +20,22 @@ clone first.
    Site Kit off (analytics), UpdraftPlus off, search engines blocked.
 5. Clears WP Fastest Cache and Elementor's CSS cache.
 
-Test donations work locally with Stripe's test cards (the test keys come from production).
+Test donations work locally with Stripe's test cards (the test keys come from production). Stripe's webhooks can't
+reach the clone, so test entries stay `Processing`: check the PaymentIntent in Stripe instead.
+
+## Updating plugins
+
+Licensed plugins (Elementor Pro, Schema Pro, Novamira Pro, Gravity SMTP, Gravity Forms Stripe) don't offer their update
+package to the clone's domain. Read each package URL from production's `update_plugins` site transient over SSH
+(read-only; the URLs carry the license, so write them to a file, not to the terminal), download the zips and install
+them with `ddev wp plugin install <zip> --force`. Take `ddev snapshot` first; after updating, run
+`ddev wp elementor update db`, `ddev wp elementor-pro update db` and `ddev wp elementor flush-css`.
 
 ## Repo mounts
 
 `.ddev/docker-compose.repo-mounts.yaml` mounts `src/theme/` as `wp-content/themes/construye-mundo/` and each file of
 `src/mu-plugins/` into `wp-content/mu-plugins/`, so repo edits show up in the clone without copying. A new mu-plugin needs
-its own line there and a `ddev restart`.
+its own line there and a `ddev restart`. Restart too after a mounted path moves in the repo: the old mount stays empty.
 
 ## First-time setup
 
